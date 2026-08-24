@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shown under the widget's name in Android's "add widget" picker. -->
+    <string name="task_habit_widget_description">የዛሬ ውጤት፣ ተግባራት እና ልምዶች በአንድ እይታ</string>
+</resources>

@@ -1,0 +1,12 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    sort_child_properties_last: false
+
+analyzer:
+  errors:
+    # Records + switch-expression style used throughout (e.g. Habit
+    # streak recompute) is intentional, not a lint issue.
+    todo: ignore

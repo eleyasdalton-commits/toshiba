@@ -1,0 +1,47 @@
+name: task_habit_tracker
+description: Personal Task & Habit Tracker with AI Analytics — offline-first Flutter app.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Local, offline-first storage
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  shared_preferences: ^2.2.2
+
+  # State management
+  provider: ^6.1.1
+
+  # Alarms & notifications
+  flutter_local_notifications: ^17.0.0
+  timezone: ^0.9.2
+
+  # Connectivity check (decides online Gemini vs offline heuristic AI)
+  connectivity_plus: ^6.0.3
+
+  # Networking for the online AI (Gemini API)
+  http: ^1.2.0
+
+  # Weekly / monthly performance graphs
+  fl_chart: ^0.68.0
+
+  # Unique ids for locally created records
+  uuid: ^4.3.3
+
+  # Native Android home-screen widget (score + tasks summary)
+  home_widget: ^0.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
