@@ -35,7 +35,7 @@ class NotificationService {
       importance: Importance.max,
     );
     await _plugin
-        .resolvePlatformSpecificImplementation<
+        .resolvePlatformSpecificImplementation
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
   }
@@ -53,7 +53,7 @@ class NotificationService {
         ),
       );
 
-  /// Schedules a one-off alarm for a task, habit, or challenge. `id` should
+  /// Schedules a one-off alarm for a task, habit, or challenge. id should
   /// be a stable hash of the record's id so re-scheduling replaces it
   /// instead of duplicating it.
   Future<void> scheduleAlarm({
@@ -74,6 +74,8 @@ class NotificationService {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
     );
+  }
+
   Future<void> cancelAlarm(int id) => _plugin.cancel(id);
 
   /// SRS section 5, "Empty List Trigger": every morning at 8:00 AM, check
@@ -87,7 +89,7 @@ class NotificationService {
       scheduled = scheduled.add(const Duration(days: 1));
     }
 
-   await _plugin.zonedSchedule(
+    await _plugin.zonedSchedule(
       _emptyListNotificationId,
       'የዛሬ እቅድ',
       'የዛሬ እቅድ አልተመዘገበም! እባክዎ እቅድዎን ያስገቡ።',
@@ -98,6 +100,8 @@ class NotificationService {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
     );
+  }
+
   /// Call this from the notification's tap handler (or a background task)
   /// to suppress the reminder on days the user already planned ahead.
   Future<bool> shouldShowEmptyListReminder() async {
