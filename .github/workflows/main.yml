@@ -22,7 +22,13 @@ jobs:
           cache: true
       - name: Regenerate Android scaffolding
         run: flutter create --platforms=android .
-
+      - name: Enable core library desugaring
+        run: |
+          if [ -f android/app/build.gradle.kts ]; then
+            printf '\nandroid {\n    compileOptions {\n        isCoreLibraryDesugaringEnabled = true\n    }\n}\n\ndependencies {\n    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")\n}\n' >> android/app/build.gradle.kts
+          else
+            printf '\nandroid {\n    compileOptions {\n        coreLibraryDesugaringEnabled true\n    }\n}\n\ndependencies {\n    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"\n}\n' >> android/app/build.gradle
+          fi
       - name: Install dependencies
         run: flutter pub get
 
