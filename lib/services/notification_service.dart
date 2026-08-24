@@ -71,9 +71,9 @@ class NotificationService {
       _details(sound: sound),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: null,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
     );
-  }
-
   Future<void> cancelAlarm(int id) => _plugin.cancel(id);
 
   /// SRS section 5, "Empty List Trigger": every morning at 8:00 AM, check
@@ -87,7 +87,7 @@ class NotificationService {
       scheduled = scheduled.add(const Duration(days: 1));
     }
 
-    await _plugin.zonedSchedule(
+   await _plugin.zonedSchedule(
       _emptyListNotificationId,
       'የዛሬ እቅድ',
       'የዛሬ እቅድ አልተመዘገበም! እባክዎ እቅድዎን ያስገቡ።',
@@ -95,9 +95,9 @@ class NotificationService {
       _details(),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time, // repeats daily
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
     );
-  }
-
   /// Call this from the notification's tap handler (or a background task)
   /// to suppress the reminder on days the user already planned ahead.
   Future<bool> shouldShowEmptyListReminder() async {
