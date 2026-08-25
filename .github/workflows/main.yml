@@ -33,10 +33,9 @@ jobs:
         run: flutter pub get
 
       - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .  true
+        run: dart format --output=none --set-exit-if-changed .
       - name: Analyze project source
-        run: flutter analyze  true
-
+        run: flutter analyze
       - name: Run tests
         run: flutter test || true
 
